@@ -10,7 +10,6 @@ export const Header = () => {
     const navigationItems = [
         { label: 'Home', href: '/' },
         { label: 'Apply Now', href: '/apply' },
-        { label: 'Check Status', href: '/status' },
         { label: 'Dashboard', href: '/dashboard' }
     ];
 
@@ -54,9 +53,17 @@ export const Header = () => {
                             <span>help@loanlink.com</span>
                         </div>
                     </div>
-                    <Button asChild>
-                        <Link to='/apply'>Apply Now</Link>
-                    </Button>
+                    <div className='flex items-center gap-2'>
+                        <Button
+                            variant='outline'
+                            asChild
+                        >
+                            <Link to='/auth'>Sign In</Link>
+                        </Button>
+                        <Button asChild>
+                            <Link to='/apply'>Apply Now</Link>
+                        </Button>
+                    </div>
                 </div>
 
                 {/* Mobile Navigation */}
@@ -106,17 +113,31 @@ export const Header = () => {
                                     <Mail className='h-4 w-4' />
                                     <span className='text-sm'>help@loanlink.com</span>
                                 </div>
-                                <Button
-                                    asChild
-                                    className='w-full'
-                                >
-                                    <Link
-                                        to='/apply'
-                                        onClick={() => setIsOpen(false)}
+                                <div className='flex flex-col gap-2'>
+                                    <Button
+                                        variant='outline'
+                                        asChild
+                                        className='w-full'
                                     >
-                                        Apply Now
-                                    </Link>
-                                </Button>
+                                        <Link
+                                            to='/auth'
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            Sign In
+                                        </Link>
+                                    </Button>
+                                    <Button
+                                        asChild
+                                        className='w-full'
+                                    >
+                                        <Link
+                                            to='/apply'
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            Apply Now
+                                        </Link>
+                                    </Button>
+                                </div>
                             </div>
                         </div>
                     </SheetContent>

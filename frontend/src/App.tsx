@@ -1,7 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from 'sonner';
 import { LandingPage } from './pages/LandingPage';
-import { ComingSoonPage } from './pages/ComingSoonPage';
+import { ApplicationPage } from './pages/ApplicationPage';
+import { ApplicationStatusPage } from './pages/ApplicationStatusPage';
+import { AuthPage } from './pages/AuthPage';
+import { DashboardPage } from './pages/DashboardPage';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -23,41 +27,22 @@ export const App = () => {
                     />
                     <Route
                         path='/apply'
-                        element={
-                            <ComingSoonPage
-                                title='Loan Application'
-                                description='Our secure loan application form will be available soon.'
-                            />
-                        }
+                        element={<ApplicationPage />}
                     />
                     <Route
-                        path='/status'
-                        element={
-                            <ComingSoonPage
-                                title='Application Status'
-                                description='Track your loan application status here.'
-                            />
-                        }
-                    />
-                    <Route
-                        path='/dashboard'
-                        element={
-                            <ComingSoonPage
-                                title='User Dashboard'
-                                description='Manage your loans and account settings.'
-                            />
-                        }
+                        path='/status/:id'
+                        element={<ApplicationStatusPage />}
                     />
                     <Route
                         path='/auth'
-                        element={
-                            <ComingSoonPage
-                                title='Sign In'
-                                description='Login to your LoanLink account.'
-                            />
-                        }
+                        element={<AuthPage />}
+                    />
+                    <Route
+                        path='/dashboard'
+                        element={<DashboardPage />}
                     />
                 </Routes>
+                <Toaster position='top-right' />
             </Router>
         </QueryClientProvider>
     );
